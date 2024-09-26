@@ -10,6 +10,6 @@ public class Funcionario {
     this.id = id;
     this.cargo = cargo;
     this.pedidos = 0;
-    this.valor_vendido = 0.0
+    this.valor_vendido = 0.0;
   }
 }
