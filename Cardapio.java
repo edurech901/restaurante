@@ -16,6 +16,29 @@ public class Cardapio {
     else System.out.println("Ha "+ this.estoque + " do prato " + this.nome_prato_bebida + " no estoque.");
   }
 
-  
-  
+  public int getCodigo() {
+      return codigo;
+  }
+  public String getNomePratoBebida(){
+    return nome_prato_bebida;
+  }
+  public Double getPreco(){
+    return preco;
+  }
+  public int getEstoque(){
+    return estoque;
+  }
+  public void setNomePratoBebida(String nome_prato_bebida){
+    this.nome_prato_bebida = nome_prato_bebida;
+  }
+  public void setCodigo(int codigo){
+    this.codigo = codigo;
+  }
+  public void setPreco(Double preco){
+    this.preco = preco;
+  }
+  public void setEstoque(int estoque){
+    this.estoque = estoque;
+  }
+
 }
