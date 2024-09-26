@@ -15,6 +15,7 @@ public class Pedido {
         this.valorTotal = 0.0;
     }
 
+    // Método para adicionar item ao pedido
     public void adicionarItem(Cardapio item) {
         if (item.getEstoque() > 0) {
             itens.add(item);
@@ -26,10 +27,12 @@ public class Pedido {
         }
     }
 
+    // Exibir o valor total do pedido
     public void mostrarValorTotal() {
         System.out.println("Valor total do pedido: R$ " + valorTotal);
     }
 
+    // Exibir detalhes do pedido
     public void detalhesPedido() {
         System.out.println("Mesa: " + mesa.getNumMesa());
         System.out.println("Garçom: " + garcom.getNome());
