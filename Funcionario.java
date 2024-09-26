@@ -9,7 +9,7 @@ public class Funcionario {
     this.nome = nome;
     this.id = id;
     this.cargo = cargo;
-    this.pedidos = 0;
+    this.quant_pedidos = 0;
     this.valor_vendido = 0.0;
   }
 }
