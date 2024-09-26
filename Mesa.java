@@ -9,20 +9,22 @@ public class Mesa {
       this.status = false;
   }
 
-  // Getters e Setters
   public int getNumMesa() {
       return num_mesa;
   }
-
   public int getCapacidade() {
       return capacidade;
   }
-
   public boolean getStatus() {
       return status;
   }
+  public void setNum_mesa(int num_mesa) {
+    this.num_mesa = num_mesa;
+}
+public void setCapacidade(int capacidade) {
+    this.capacidade = capacidade;
+}
 
-  // Métodos para consultar e mudar o status da mesa
   public void consultarStatus() {
       if (status) {
           System.out.println("A mesa " + this.num_mesa + " está disponível");
@@ -32,7 +34,9 @@ public class Mesa {
   }
 
   public void mudarStatus() {
-      status = !status; // Alterna o status
+      status = !status;
       System.out.println("A mesa " + this.num_mesa + (status ? " ficou disponível" : " não está mais disponível"));
   }
+
+    
 }
