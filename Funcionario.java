@@ -2,7 +2,7 @@ public class Funcionario {
   String nome;
   int id;
   String cargo;
-  int pedidos;
+  int quant_pedidos;
   Double valor_vendido;
 
   public Funcionario(String nome, int id, String cargo){
