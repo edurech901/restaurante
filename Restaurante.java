@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Restaurante {
 
-  public static List<Cardapio> cardapio(){
+  public static List<Cardapio> cardapio() {
     List<Cardapio> cardapio = new ArrayList<>();
 
     cardapio.add(new Cardapio("Jen's Cheese", 1, 24.00));
@@ -24,7 +25,7 @@ public class Restaurante {
     return cardapio;
   }
 
-  public static List<Mesa> mesas(){
+  public static List<Mesa> mesas() {
     List<Mesa> mesas = new ArrayList<>();
     mesas.add(new Mesa(1, 4));
     mesas.add(new Mesa(2, 4));
@@ -34,9 +35,44 @@ public class Restaurante {
     return mesas;
   }
 
+  public static List<Funcionario> funcionarios() {
+    List<Funcionario> funcionarios = new ArrayList<>();
+    funcionarios.add(new Funcionario("Cleiton", 1000, "Garçom"));
+    funcionarios.add(new Funcionario("Robson", 1001, "Garçom"));
+    funcionarios.add(new Funcionario("Roberto", 2000, "Atendente"));
+    funcionarios.add(new Funcionario("Maria", 3000, "Cozinheiro"));
+    funcionarios.add(new Funcionario("Vitor", 3001, "Cozinheiro"));
+    funcionarios.add(new Funcionario("Danilo", 1002, "Garçom"));
+    return funcionarios;
+  }
+
   public static void main(String[] args) {
-    
-    
-    
+
+    mesas().get(1).mudarStatus();
+
+    while (true) {
+      Scanner scan = new Scanner(System.in);
+      int op;
+      System.out.println("-------- MENU ---------");
+      System.out.println("1 -- Consultar mesa");
+      System.out.println("2 -- Mudar o Status da mesa");
+      System.out.println("3 -- Mostrar cardapio");
+      System.out.println("0 -- Sair");
+
+      op = scan.nextInt();
+
+      switch (op) {
+        case 0 -> {
+          break;
+        }
+        case 1 -> {
+          System.out.println("Digite o numero da mesa que deseja consultar:");
+          op = scan.nextInt();
+          mesas().get(op-1).consultarStatus();
+        }
+      }
+
     }
+
+  }
 }
