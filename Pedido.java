@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pedido {
-    private Mesa mesa;
-    private Funcionario garcom;
-    private List<Cardapio> itens;
-    private double valorTotal;
+    Mesa mesa;
+    Funcionario garcom;
+    List<Cardapio> itens;
+    double valorTotal;
 
     public Pedido(Mesa mesa, Funcionario garcom) {
         this.mesa = mesa;

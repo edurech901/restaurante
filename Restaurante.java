@@ -42,9 +42,12 @@ public class Restaurante {
       Scanner scan = new Scanner(System.in);
       int op;
       System.out.println("\n-------- MENU ---------");
-      System.out.println("1 -- Consultar mesa");
-      System.out.println("2 -- Mudar o Status da mesa");
-      System.out.println("3 -- Mostrar cardapio");
+      System.out.println("1 -- Cadastrar funcionario");
+      System.out.println("2 -- Cadastrar mesa");
+      System.out.println("3 -- Cadastrar prato no cardapio");
+      System.out.println("4 -- Consultar mesa");
+      System.out.println("5 -- Mudar o Status da mesa");
+      System.out.println("6 -- Mostrar cardapio");
       System.out.println("0 -- Sair");
 
       op = scan.nextInt();
@@ -54,20 +57,45 @@ public class Restaurante {
           return;
         }
         case 1 -> {
+          String nome, cargo;
+          System.out.println("Digite o nome do funcionario");
+          nome = scan.next();
+          System.out.println("Digite o cargo do funcionario");
+          cargo = scan.next();
+          funcionarios.add(new Funcionario(nome, funcionarios.size(), cargo));
+        }
+        case 2 -> {
+          System.out.println("Qual a capacidade da mesa");
+          op = scan.nextInt();
+          mesas.add(new Mesa(mesas.size(), op));
+        }
+        case 3 -> {
+          String nome;
+          double preco;
+          System.out.println("Digite o nome do prato ou bebida");
+          nome = scan.next();
+          System.out.println("Digite o preco");
+          preco = scan.nextDouble();
+          cardapio.add(new Cardapio(nome, cardapio.size(), preco));
+        }
+        case 4 -> {
           System.out.println("Digite o numero da mesa que deseja consultar:");
           op = scan.nextInt();
           mesas.get(op - 1).consultarStatus();
         }
-        case 2 -> {
+        case 5 -> {
           System.out.println("Digite o numero da mesa que deseja mudar o status:");
           op = scan.nextInt();
           mesas.get(op - 1).mudarStatus();
         }
-        case 3 -> {
+        case 6 -> {
           System.out.println("\n--- Cardapio ---");
-          for(Cardapio item : cardapio){
+          for (Cardapio item : cardapio) {
             System.out.println("- " + item.getNomePratoBebida() + ": R$ " + item.getPreco());
           }
+        }
+        case 7 -> {
+
         }
       }
     }
