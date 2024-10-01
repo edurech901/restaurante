@@ -55,9 +55,10 @@ public class Restaurante {
       System.out.println("9  -- Anotar pedido");
       System.out.println("10 -- Lista de pedidos");
       System.out.println("11 -- Vendas por funcionario");
-      System.out.println("12 -- Fechar Conta");
-      System.out.println("0  -- Sair");
-
+      System.out.println("12 -- Fechar Conta de uma mesa");
+      System.out.println("13 -- Relatorio de vendas");
+      System.out.println("0  -- Sair\n");
+      System.out.println("Escolha a opção:");
       op = scan.nextInt();
 
       switch (op) {
@@ -217,11 +218,13 @@ public class Restaurante {
         case 13 -> {
           int quant_pedidos = 0;
           double total_vendas = 0;
+          System.out.println("Funcionarios:");
           for(Funcionario a : funcionarios){
             System.out.println(a.getId() + " - " + a.getNome() + "");
             System.out.println("Pedidos: "+a.getQuantPedidos() + "\nValor: R$" + a.getValorVendido());
             System.out.println();
             }
+          System.out.println("Mesas:");
           for(Mesa a : mesas){
             quant_pedidos += a.getQuantPedidos();
             total_vendas += a.getValorVendido();
