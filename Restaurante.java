@@ -175,6 +175,25 @@ public class Restaurante {
             }
           }
         }
+        case 13 -> {
+          int quant_pedidos = 0;
+          double total_vendas = 0;
+          for(Funcionario a : funcionarios){
+            System.out.println(a.getId() + " - " + a.getNome() + "");
+            System.out.println("Pedidos: "+a.getQuantPedidos() + "\nValor: R$" + a.getValorVendido());
+            System.out.println();
+            }
+          for(Mesa a : mesas){
+            quant_pedidos += a.getQuantPedidos();
+            total_vendas += a.getValorVendido();
+            System.out.println("Mesa " + a.getNumMesa() + ":");
+            System.out.println("Pedidos: "+a.getQuantPedidos() + "\nValor: R$" + a.getValorVendido());
+            System.out.println();
+          }
+          System.out.println("------ Total -------");
+          System.out.println("Quantidade de pedidos: " + quant_pedidos);
+          System.out.println("Valor total vendido: " + total_vendas);
+        }
       }
     }
   }
