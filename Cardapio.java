@@ -8,7 +8,7 @@ public class Cardapio {
     this.nome_prato_bebida = nome_prato_bebida;
     this.codigo = codigo;
     this.preco = preco;
-    this.estoque = 0;
+    this.estoque = 10;
   }
 
   public void consultar_estoque(){
