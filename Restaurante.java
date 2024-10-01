@@ -24,12 +24,12 @@ public class Restaurante {
     cardapio.add(new Cardapio("Duplo BCC", 15, 39.90));
 
     List<Funcionario> funcionarios = new ArrayList<>();
-    funcionarios.add(new Funcionario("Cleiton", 1000, "Garçom"));
-    funcionarios.add(new Funcionario("Robson", 1001, "Garçom"));
+    funcionarios.add(new Funcionario("Cleiton", 1000, "Garcom"));
+    funcionarios.add(new Funcionario("Robson", 1001, "Garcom"));
     funcionarios.add(new Funcionario("Roberto", 1002, "Atendente"));
     funcionarios.add(new Funcionario("Maria", 1003, "Cozinheiro"));
     funcionarios.add(new Funcionario("Vitor", 1004, "Cozinheiro"));
-    funcionarios.add(new Funcionario("Danilo", 1005, "Garçom"));
+    funcionarios.add(new Funcionario("Danilo", 1005, "Garcom"));
 
     List<Mesa> mesas = new ArrayList<>();
     mesas.add(new Mesa(1, 4));
@@ -54,6 +54,7 @@ public class Restaurante {
       System.out.println("8  -- Mudar o Status da mesa");
       System.out.println("9  -- Anotar pedido");
       System.out.println("10 -- Lista de pedidos");
+      System.out.println("11 -- Vendas por funcionario");
       System.out.println("0  -- Sair");
 
       op = scan.nextInt();
@@ -128,7 +129,7 @@ public class Restaurante {
           }
           System.out.println("Digite o numero da mesa do pedido: ");
           num_mesa = scan.nextInt();
-          if (num_mesa > mesas.size() - 1 || id <= 0) {
+          if (num_mesa > mesas.size() || id <= 0) {
             System.out.println("Codigo invalido");
             break;
           }
@@ -140,10 +141,14 @@ public class Restaurante {
           while (true) {
             int codigo;
             Cardapio item = null;
+            System.out.println("Sair - 0");
             System.out.println("Digite o codigo do item pedido");
-            System.out.println("0 -- Sair");
             codigo = scan.nextInt();
             if (codigo == 0) {
+              funcionarios.get(funcionarios.indexOf(f_temp)).setQuantPedidos(funcionarios.get(funcionarios.indexOf(f_temp)).getQuantPedidos()+1);
+              funcionarios.get(funcionarios.indexOf(f_temp)).setValorVendido(funcionarios.get(funcionarios.indexOf(f_temp)).getValorVendido()+p_temp.valorTotal);
+              mesas.get(mesas.indexOf(m_temp)).setQuantPedidos(mesas.get(mesas.indexOf(m_temp)).getQuantPedidos()+1);
+              mesas.get(mesas.indexOf(m_temp)).setValorVendido(mesas.get(mesas.indexOf(m_temp)).getValorVendido()+p_temp.valorTotal);
               pedidos.add(p_temp);
               break;
             }
@@ -159,6 +164,15 @@ public class Restaurante {
             System.out.println("--------------------------");
             a.detalhesPedido();
             System.out.println("--------------------------");
+          }
+        }
+        case 11 -> {
+          for(Funcionario a : funcionarios){
+            if(a.getCargo().equals("Garcom")){
+              System.out.println(a.getId() + " - " + a.getNome() + "");
+              System.out.println("Pedidos: "+a.getQuantPedidos() + "\nValor: R$" + a.getValorVendido());
+              System.out.println();
+            }
           }
         }
       }

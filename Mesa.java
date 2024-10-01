@@ -2,12 +2,14 @@ public class Mesa {
     int num_mesa;
     int capacidade;
     boolean status;
+    int quant_pedidos;
     double valor_vendido;
 
     public Mesa(int num_mesa, int capacidade) {
         this.num_mesa = num_mesa;
         this.capacidade = capacidade;
         this.status = false;
+        quant_pedidos = 0;
         valor_vendido = 0;
     }
 
@@ -31,11 +33,11 @@ public class Mesa {
         this.capacidade = capacidade;
     }
 
-    public double getValor_vendido() {
+    public double getValorVendido() {
         return valor_vendido;
     }
 
-    public void setValor_vendido(double valor_vendido) {
+    public void setValorVendido(double valor_vendido) {
         this.valor_vendido = valor_vendido;
     }
 
@@ -55,6 +57,14 @@ public class Mesa {
             status = false;
             System.out.println("A mesa " + this.num_mesa + " agora está disponível");
         }
+    }
+
+    public int getQuantPedidos() {
+        return quant_pedidos;
+    }
+
+    public void setQuantPedidos(int quant_pedidos) {
+        this.quant_pedidos = quant_pedidos;
     }
 
    

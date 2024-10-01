@@ -31,16 +31,16 @@ public class Funcionario {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
-    public int getQuant_pedidos() {
+    public int getQuantPedidos() {
         return quant_pedidos;
     }
-    public void setQuant_pedidos(int quant_pedidos) {
+    public void setQuantPedidos(int quant_pedidos) {
         this.quant_pedidos = quant_pedidos;
     }
-    public Double getValor_vendido() {
+    public Double getValorVendido() {
         return valor_vendido;
     }
-    public void setValor_vendido(Double valor_vendido) {
+    public void setValorVendido(Double valor_vendido) {
         this.valor_vendido = valor_vendido;
     }
 
