@@ -55,6 +55,7 @@ public class Restaurante {
       System.out.println("9  -- Anotar pedido");
       System.out.println("10 -- Lista de pedidos");
       System.out.println("11 -- Vendas por funcionario");
+      System.out.println("12 -- Fechar Conta");
       System.out.println("0  -- Sair");
 
       op = scan.nextInt();
@@ -175,6 +176,44 @@ public class Restaurante {
             }
           }
         }
+
+        case 12 -> {
+          System.out.println("Digite o número da mesa para fechar a conta:");
+          int numMesa = scan.nextInt();
+
+          if (numMesa > 0 && numMesa <= mesas.size()) {
+            Mesa mesa = mesas.get(numMesa - 1);
+            
+            if (mesa.getQuantPedidos() > 0) {
+              double valorTotal = 0;
+
+              for (Pedido pedido : pedidos) {
+                if (pedido.getMesa().getNumMesa() == numMesa) {
+                  valorTotal += pedido.valorTotal;
+                }
+              }
+              
+              System.out.println("Valor total a ser pago: R$ " + valorTotal);
+              System.out.println("Digite 1 para confirmar o pagamento e liberar a mesa, ou 0 para cancelar.");
+              int confirmacao = scan.nextInt();
+    
+              if (confirmacao == 1) {
+                mesa.mudarStatus();  
+                mesa.setQuantPedidos(0);
+                mesa.setValorVendido(0.0);
+                
+                System.out.println("Pagamento registrado. Mesa " + numMesa + " foi liberada.");
+              } else {
+                System.out.println("Operação cancelada.");
+              }
+            } else {
+              System.out.println("A mesa não possui pedidos.");
+            }
+          } else {
+            System.out.println("Mesa inválida.");
+          }
+        }
+        
         case 13 -> {
           int quant_pedidos = 0;
           double total_vendas = 0;
@@ -194,6 +233,7 @@ public class Restaurante {
           System.out.println("Quantidade de pedidos: " + quant_pedidos);
           System.out.println("Valor total vendido: " + total_vendas);
         }
+
       }
     }
   }
