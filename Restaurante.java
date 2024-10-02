@@ -236,7 +236,6 @@ public class Restaurante {
           System.out.println("Quantidade de pedidos: " + quant_pedidos);
           System.out.println("Valor total vendido: " + total_vendas);
         }
-
       }
     }
   }
