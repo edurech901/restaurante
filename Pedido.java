@@ -6,12 +6,14 @@ public class Pedido {
     Funcionario garcom;
     List<Cardapio> itens;
     double valorTotal;
+    boolean status;
 
     public Pedido(Mesa mesa, Funcionario garcom) {
         this.mesa = mesa;
         this.garcom = garcom;
         this.itens = new ArrayList<>();
         this.valorTotal = 0.0;
+        this.status = false;
     }
 
     public void setGarcom(Funcionario garcom) {
@@ -53,6 +55,16 @@ public class Pedido {
             System.out.println("- " + item.getNomePratoBebida() + ": R$ " + item.getPreco());
         }
         mostrarValorTotal();
+        if(status == true) System.out.println("-Fechado");
+        else System.out.println("-Aberto");
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     

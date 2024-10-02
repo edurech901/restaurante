@@ -47,7 +47,7 @@ public class Restaurante {
       System.out.println("1  -- Cadastrar funcionario");
       System.out.println("2  -- Lista de funcionarios");
       System.out.println("3  -- Cadastrar mesa");
-      System.out.println("4  -- Lista de mesas mesa");
+      System.out.println("4  -- Lista de mesas");
       System.out.println("5  -- Cadastrar prato no cardapio");
       System.out.println("6  -- Mostrar cardapio");
       System.out.println("7  -- Consultar mesa");
@@ -143,14 +143,15 @@ public class Restaurante {
           while (true) {
             int codigo;
             Cardapio item = null;
-            System.out.println("Sair - 0");
-            System.out.println("Digite o codigo do item pedido");
+            System.out.println("Digite '0' para finalizar pedido");
+            System.out.println("Digite o codigo do item pedido:");
             codigo = scan.nextInt();
             if (codigo == 0) {
               funcionarios.get(funcionarios.indexOf(f_temp)).setQuantPedidos(funcionarios.get(funcionarios.indexOf(f_temp)).getQuantPedidos()+1);
               funcionarios.get(funcionarios.indexOf(f_temp)).setValorVendido(funcionarios.get(funcionarios.indexOf(f_temp)).getValorVendido()+p_temp.valorTotal);
               mesas.get(mesas.indexOf(m_temp)).setQuantPedidos(mesas.get(mesas.indexOf(m_temp)).getQuantPedidos()+1);
               mesas.get(mesas.indexOf(m_temp)).setValorVendido(mesas.get(mesas.indexOf(m_temp)).getValorVendido()+p_temp.valorTotal);
+              mesas.get(mesas.indexOf(m_temp)).mudarStatus();
               pedidos.add(p_temp);
               break;
             }
@@ -202,7 +203,9 @@ public class Restaurante {
                 mesa.mudarStatus();  
                 mesa.setQuantPedidos(0);
                 mesa.setValorVendido(0.0);
-                
+                for(Pedido a: pedidos){
+                  if(a.getMesa().getNumMesa() == numMesa) a.setStatus(true);
+                }
                 System.out.println("Pagamento registrado. Mesa " + numMesa + " foi liberada.");
               } else {
                 System.out.println("Operação cancelada.");
@@ -218,13 +221,13 @@ public class Restaurante {
         case 13 -> {
           int quant_pedidos = 0;
           double total_vendas = 0;
-          System.out.println("Funcionarios:");
+          System.out.println("--Funcionarios:");
           for(Funcionario a : funcionarios){
             System.out.println(a.getId() + " - " + a.getNome() + "");
             System.out.println("Pedidos: "+a.getQuantPedidos() + "\nValor: R$" + a.getValorVendido());
             System.out.println();
             }
-          System.out.println("Mesas:");
+          System.out.println("--Mesas:");
           for(Mesa a : mesas){
             quant_pedidos += a.getQuantPedidos();
             total_vendas += a.getValorVendido();

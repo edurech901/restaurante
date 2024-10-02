@@ -43,19 +43,19 @@ public class Mesa {
 
     public void consultarStatus() {
         if (status == false) {
-            System.out.println("A mesa " + this.num_mesa + " está disponível");
+            System.out.println("A mesa " + this.num_mesa + " esta disponível");
         } else {
-            System.out.println("A mesa " + this.num_mesa + " não está disponível");
+            System.out.println("A mesa " + this.num_mesa + " esta ocupada");
         }
     }
 
     public void mudarStatus() {
         if (status == false) {
             status = true;
-            System.out.println("A mesa " + this.num_mesa + " não está mais disponível");
+            System.out.println("Status da mesa " + this.num_mesa + " mudado para 'Ocupada'");
         } else {
             status = false;
-            System.out.println("A mesa " + this.num_mesa + " agora está disponível");
+            System.out.println("Status da mesa " + this.num_mesa + " mudado para 'Disponivel'");
         }
     }
 
